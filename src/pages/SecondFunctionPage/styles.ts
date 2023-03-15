@@ -1,47 +1,43 @@
 import styled from 'styled-components';
 
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  ImageBackground,
-  Image,
-} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
 
 export const Container = styled(View)`
   flex: 1;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #829485;
 `;
 
-export const ContainerBackground = styled(ImageBackground)`
+export const BodyContainer = styled(View)`
   width: 100%;
   height: 100%;
-`;
-
-export const ViewBackground = styled(View)`
-  background-color: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  height: 100%;
-  display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const ContainerInput = styled(View)`
   padding: 0 15px;
-  width: 200px;
+  width: 100%;
   height: 46px;
   margin-top: 8px;
   border-radius: 4px;
-  background-color: #262626;
+  background-color: #007676;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 `;
 
+export const Logo = styled(Image)`
+  margin-bottom: 8px;
+  height: 75px;
+  width: 105px;
+`;
+
 export const PrincipalTitle = styled(Text)`
-  margin-bottom: 16px;
+  margin: 8px 0;
   font-size: 20px;
   line-height: 25px;
   font-weight: bold;
@@ -70,22 +66,29 @@ export const BtnContainer = styled(View)`
 
 export const BackBtn = styled(TouchableOpacity)`
   height: 60px;
-  width: 200px;
-  align-items: center;
+  width: 100%;
+  padding: 8px;
+  align-items: flex-start;
   justify-content: center;
-  background-color: #88ffc3;
+  background-color: #1d1d1d;
+  border-radius: 8px;
+`;
+
+export const BackIcon = styled(Image)`
+  height: 32px;
+  width: 32px;
 `;
 
 export const CalcBtn = styled(TouchableOpacity)`
   height: 60px;
-  width: 160px;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: #88ffc3;
+  background-color: #007676;
 `;
 
 export const BtnText = styled(Text)`
-  color: #262626;
+  color: #fafafa;
   font-weight: bold;
   font-size: 18px;
   line-height: 23px;
