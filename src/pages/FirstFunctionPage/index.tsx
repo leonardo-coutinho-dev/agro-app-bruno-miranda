@@ -4,11 +4,19 @@ import * as styles from './styles';
 
 import ROUTES from '../../constants/routes';
 
-import {TouchableWithoutFeedback, Keyboard} from 'react-native';
+import Text from '../../components/Text/Text';
+
+import ContainerView from '../../components/ContainerView/ContainerView';
+
+import ContainerLogo from '../../components/ContainerLogo/ContainerLogo';
+
+import Input from '../../components/Input/Input';
+
+import ButtonElement from '../../components/ButtonElement/ButtonElement';
+
+import CalcButton from '../../components/CalcButton/CalcButton';
 
 const backgroundImage = require('../../assets/logo.png');
-
-const eraserIcon = require('../../assets/eraser.png');
 
 const chevronIcon = require('../../assets/chevron.png');
 
@@ -28,53 +36,63 @@ let FirstFunctionPage = ({navigation}: any) => {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <styles.Container>
-        <styles.BackBtn
-          onPress={() => {
-            navigation.navigate(ROUTES.FUNCTIONSPAGE);
-          }}>
-          <styles.BackIcon source={chevronIcon} />
-        </styles.BackBtn>
-        <styles.BodyContainer>
+    <ContainerView model={'dark'}>
+      <ButtonElement
+        model={'white'}
+        onPress={() => {
+          navigation.navigate(ROUTES.FUNCTIONSPAGE);
+        }}>
+        <styles.BackArrow source={chevronIcon} />
+      </ButtonElement>
+      <styles.BodyContainer>
+        <ContainerLogo shadow={'light'} size={'small'} marginBottom={true}>
           <styles.Logo source={backgroundImage} />
-          <styles.PrincipalTitle>Pulverizador sem voluta</styles.PrincipalTitle>
-          <styles.Title>Taxa de Aplicação (L/ha)</styles.Title>
-          <styles.ContainerInput>
-            <styles.TInput
-              onChangeText={text => setNumberOne(+text)}
-              placeholder="Taxa de Aplicação (L/ha)"
-              keyboardType="numeric"
-            />
-          </styles.ContainerInput>
-          <styles.Title>Velocidade (km/h)</styles.Title>
-          <styles.ContainerInput>
-            <styles.TInput
-              onChangeText={text => setNumberTwo(+text)}
-              placeholder="Velocidade (km/h)"
-              keyboardType="numeric"
-            />
-          </styles.ContainerInput>
-          <styles.Title>Espaçamento da quadra (m)</styles.Title>
-          <styles.ContainerInput>
-            <styles.TInput
-              onChangeText={text => setNumberThree(+text)}
-              placeholder="Espaçamento da quadra (m)"
-              keyboardType="numeric"
-            />
-          </styles.ContainerInput>
-          <styles.Title>Número de bicos</styles.Title>
-          <styles.ContainerInput>
-            <styles.TInput
-              onChangeText={text => setNumberFour(+text)}
-              placeholder="Número de bicos"
-              keyboardType="numeric"
-            />
-          </styles.ContainerInput>
-          <styles.Title>Coletar em 30 segundos (mL):</styles.Title>
-          <styles.Title>{result} mL</styles.Title>
-          <styles.BtnContainer>
-            <styles.CalcBtn
+          <Text model={'green'} size={'small'} marginTop={true}>
+            Pulverizador sem voluta
+          </Text>
+        </ContainerLogo>
+        <Input
+          model={isNaN(numberOne) ? 'danger' : 'normal'}
+          label={
+            isNaN(numberOne) ? 'Número inválido' : 'Taxa de Aplicação (L/ha)'
+          }
+          onChangeText={text => setNumberOne(+text.replace(/,/g, '.'))}
+        />
+        <Input
+          model={isNaN(numberTwo) ? 'danger' : 'normal'}
+          label={isNaN(numberTwo) ? 'Número inválido' : 'Velocidade (km/h)'}
+          onChangeText={text => setNumberTwo(+text.replace(/,/g, '.'))}
+        />
+        <Input
+          model={isNaN(numberThree) ? 'danger' : 'normal'}
+          label={
+            isNaN(numberThree) ? 'Número inválido' : 'Espaçamento da quadra (m)'
+          }
+          onChangeText={text => setNumberThree(+text.replace(/,/g, '.'))}
+        />
+        <Input
+          model={isNaN(numberFour) ? 'danger' : 'normal'}
+          label={isNaN(numberFour) ? 'Número inválido' : 'Número de bicos'}
+          onChangeText={text => setNumberFour(+text.replace(/,/g, '.'))}
+        />
+        <Text model={'white'} size={'small'} marginTop={true}>
+          Coletar em 30 segundos (mL):
+        </Text>
+        <Text model={'white'} size={'small'} marginTop={true}>
+          {result} mL
+        </Text>
+        <styles.BtnContainer>
+          {isNaN(numberOne) ||
+          isNaN(numberTwo) ||
+          isNaN(numberThree) ||
+          isNaN(numberFour) ? (
+            <CalcButton model={'disabled'}>
+              <Text model={'green'} size={'medium'}>
+                No. inválido
+              </Text>
+            </CalcButton>
+          ) : (
+            <CalcButton
               onPress={() => {
                 let resultCalc = calcResult(
                   numberOne,
@@ -82,20 +100,26 @@ let FirstFunctionPage = ({navigation}: any) => {
                   numberThree,
                   numberFour,
                 );
-                setResult(resultCalc);
+                let finalValue = parseFloat(resultCalc.toFixed(2));
+                setResult(finalValue);
               }}>
-              <styles.BtnText>Calcular</styles.BtnText>
-            </styles.CalcBtn>
-            <styles.ClearBtn
-              onPress={() => {
-                setResult(0);
-              }}>
-              <styles.EraseIcon source={eraserIcon} />
-            </styles.ClearBtn>
-          </styles.BtnContainer>
-        </styles.BodyContainer>
-      </styles.Container>
-    </TouchableWithoutFeedback>
+              <Text model={'white'} size={'medium'}>
+                Calcular
+              </Text>
+            </CalcButton>
+          )}
+          <CalcButton
+            model={'danger'}
+            onPress={() => {
+              setResult(0);
+            }}>
+            <Text model={'white'} size={'medium'}>
+              Zerar
+            </Text>
+          </CalcButton>
+        </styles.BtnContainer>
+      </styles.BodyContainer>
+    </ContainerView>
   );
 };
 
