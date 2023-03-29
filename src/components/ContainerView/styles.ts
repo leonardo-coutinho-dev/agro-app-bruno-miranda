@@ -1,20 +1,20 @@
+import {View} from 'react-native';
+
+import {RFValue} from 'react-native-responsive-fontsize';
+
 import styled from 'styled-components';
 
 import {ContainerViewProps} from './ContainerView';
 
-import {ScrollView} from 'react-native';
-
-import {SafeAreaView} from 'react-native-safe-area-context';
-
-export const BackgroundSafeAreaView = styled(SafeAreaView)<ContainerViewProps>`
+export const BackgroundView = styled(View)<ContainerViewProps>`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: ${RFValue(20)}px;
   background-color: ${props =>
     props.model === 'light'
-      ? '#eddccc'
+      ? '#ebebeb'
       : props.model === 'dark'
       ? '#111c22'
-      : '#eddccc'};
-`;
-
-export const CustomScrollView = styled(ScrollView)`
-  flex: 1;
+      : '#ebebeb'};
 `;

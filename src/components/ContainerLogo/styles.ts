@@ -17,7 +17,7 @@ export const CustomView = styled(View)<ContainerLogoProps>`
     0;
   margin-bottom: ${props =>
     props.marginBottom === true ? `${RFValue(12)}px` : 0};
-  background-color: #fafafa;
+  background-color: transparent;
   box-shadow: 4px 4px
     ${props =>
       props.shadow === 'light'

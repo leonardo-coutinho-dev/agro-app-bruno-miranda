@@ -4,7 +4,7 @@ import * as styles from './styles';
 
 export interface TextElementProps {
   children: React.ReactNode;
-  model: 'white' | 'green';
+  model: 'white' | 'green' | 'disabled';
   size: 'big' | 'medium' | 'small';
   marginTop?: boolean;
 }

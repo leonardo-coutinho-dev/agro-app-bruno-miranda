@@ -28,7 +28,9 @@ export const TextElement = styled(Text)<TextElementProps>`
       ? '#fafafa'
       : props.model === 'green'
       ? '#829485'
+      : props.model === 'disabled'
+      ? '#4b4c58'
       : '#fafafa'};
-  margin-top: ${props => (props.marginTop === true ? `${RFValue(8)}px` : 0)};
+  margin-top: ${props => (props.marginTop === true ? `${RFValue(20)}px` : 0)};
   font-weight: bold;
 `;

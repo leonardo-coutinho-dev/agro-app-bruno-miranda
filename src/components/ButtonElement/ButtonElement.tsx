@@ -1,25 +1,18 @@
 import React from 'react';
 
+import {ButtonProps} from 'react-native-paper';
+
 import * as styles from './styles';
 
-export interface ButtonElementProps {
+export interface ButtonElementProps extends ButtonProps {
   children: React.ReactNode;
   model: 'black' | 'white';
   marginTop?: boolean;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
-const ButtonElement = ({
-  children,
-  model,
-  onPress,
-  marginTop,
-}: ButtonElementProps) => {
-  return (
-    <styles.CustomButton onPress={onPress} model={model} marginTop={marginTop}>
-      {children}
-    </styles.CustomButton>
-  );
+const ButtonElement = ({children, ...props}: ButtonElementProps) => {
+  return <styles.CustomButton {...props}>{children}</styles.CustomButton>;
 };
 
 export default ButtonElement;
