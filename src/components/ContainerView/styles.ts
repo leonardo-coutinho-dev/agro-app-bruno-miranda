@@ -13,8 +13,8 @@ export const BackgroundView = styled(View)<ContainerViewProps>`
   padding: ${RFValue(20)}px;
   background-color: ${props =>
     props.model === 'light'
-      ? '#ebebeb'
+      ? '#E4DEAE'
       : props.model === 'dark'
       ? '#111c22'
-      : '#ebebeb'};
+      : '#E4DEAE'};
 `;

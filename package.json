@@ -1,6 +1,23 @@
 {
-  "name": "projetoAgroFuncao",
-  "version": "0.0.1",
+  "name": "cambuhy-pulverizacao",
+  "version": "2.0.0",
+  "description": "Aplicativo utilizado para regulagem de pulverizadores da Fazenda Cambuhy Agrícola LTDA. Segunda versão. Feito de um amigo para outro amigo, sem fins lucrativos.",
+  "author": {
+    "name": "Leonardo Coutinho dos Santos",
+    "email": "web.dev.trabalho@gmail.com",
+    "url": "https://www.linkedin.com/in/leonardo-coutinho-programador/"
+  },
+  "contributors": [
+    {
+      "name": "Bruno Miranda de Alves Ferreira",
+      "email": "brunofcav@gmail.com",
+      "url": "https://www.linkedin.com/in/brunomaf/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leonardo-coutinho-dev/agro-app-bruno-miranda"
+  },
   "private": true,
   "scripts": {
     "android": "react-native run-android",

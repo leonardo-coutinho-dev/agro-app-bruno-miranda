@@ -49,6 +49,7 @@ let FunctionsPage = ({navigation}: any) => {
 export const styles = StyleSheet.create({
   card: {
     borderRadius: 0,
+    backgroundColor: '#E4DEAE',
   },
   cardCover: {
     padding: 10,

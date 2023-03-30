@@ -151,9 +151,11 @@ export const stylesDefault = StyleSheet.create({
   card: {
     width: '100%',
     borderRadius: 0,
+    backgroundColor: '#E4DEAE',
   },
   cardTitle: {
     textAlign: 'center',
+    backgroundColor: '#E4DEAE',
   },
 });
 
